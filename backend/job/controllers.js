@@ -12,22 +12,33 @@ const JobController = {
         .getSpec(query.page, query.limit);
 
       let url = `http://dev3.dansmultipro.co.id/api/recruitment/positions.json`;
-
-      if (query.page) {
-        url = url + '?page=' + page
-      }
-      console.log(url)
-      if (query.search) {
-        
-      }
-
-      const config = {
+      let config = {
         method: 'get',
         url: url,
         headers: {
           'Content-Type': 'application/json',
         },
       }
+
+      let totalDocs = await axios(config)
+        .then(response => {
+          return response.data.length
+        })
+        .catch(error => {
+          throw error
+        })
+
+      if (query.page) {
+        url = url + '?page=' + page
+      }
+      if (query.description && query.description !== '') {
+        url = url + '&description=' + query.description
+      }
+      if (query.location && query.description !== '') {
+        url = url + '&location=' + query.location
+      }
+
+      config.url = url
 
       axios(config)
         .then((response) => {
@@ -36,11 +47,11 @@ const JobController = {
               .status(200)
               .json(Pagination
                 .buildPagination(
-                  [],
+                  res.data,
                   {
                     limit: limit,
                     page: page,
-                    total: 0,
+                    total: totalDocs,
                   }))
           }
 
@@ -52,7 +63,7 @@ const JobController = {
                 {
                   limit: limit,
                   page: page,
-                  total: response.data.length,
+                  total: totalDocs,
                 }))
         })
         .catch((error) => {

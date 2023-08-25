@@ -9,7 +9,7 @@ class Pagination {
     let tempPage = parseInt(page);
     let tempLimit = parseInt(limit);
 
-    if (!tempPage || tempPage < 0) tempPage = 0;
+    if (!tempPage || tempPage < 1) tempPage = 1;
     if (!tempLimit || tempLimit > 10 || tempLimit < 1) tempLimit = 10;
 
     const offset = tempLimit * tempPage;
