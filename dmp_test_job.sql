@@ -41,7 +41,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`userID`, `email`, `password`, `fullname`, `token`) VALUES
 ('015416bfcb998b55b3753893aa49f7e2', 'admin@admin.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'ADMIN', ''),
-('5ab96fc8b0a359850c07bcd9f2172695', 'ghaninf@gmail.com', 'cc2afe5029cf4ae9189c91d7454c7671a6612078', 'Ghani Noor Fatah', '');
+('5ab96fc8b0a359850c07bcd9f2172695', 'ghaninf@gmail.com', 'e47b6e23ccf8053c5d007588e319518aba63e2b0', 'Ghani Noor Fatah', '');
 
 --
 -- Indexes for dumped tables
