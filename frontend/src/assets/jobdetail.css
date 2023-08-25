@@ -1,0 +1,22 @@
+#description-item > * {
+  margin-top: 12px;
+  margin-bottom: 6px;
+}
+
+#description-item > *:has(strong) {
+  margin-top: 24px;
+}
+
+#description-item > * > strong {
+  font-size: 24px;
+}
+
+#description-item > ul {
+  margin: 0;
+  padding-left: 2.5rem;
+  list-style-type: disc;
+}
+
+#apply-link {
+  word-wrap: break-word;
+}
