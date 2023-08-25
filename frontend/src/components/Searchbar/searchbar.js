@@ -25,8 +25,8 @@ export default function Searchbar(props) {
         onChange={props.onChange}
         icon={IconLocation}
       />
-      <div className="relative mt-5 min-w-fit flex flex-row flex-nowrap gap-x-4 justify-center items-center">
-        <input onChange={props.onChange} type="checkbox" value={props.input.fulltime} checked={props.input.fulltime} />
+      <div onClick={props.handleFulltime} className="relative mt-5 min-w-fit flex flex-row flex-nowrap gap-x-4 justify-center items-center cursor-pointer">
+        <input type="checkbox" checked={props.input.fulltime} />
         <p>Full Time Only</p>
       </div>
       <div className="relative mt-5 min-w-fit flex flex-row flex-nowrap gap-x-4 justify-center items-center">

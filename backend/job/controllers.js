@@ -37,6 +37,9 @@ const JobController = {
       if (query.location && query.description !== '') {
         url = url + '&location=' + query.location
       }
+      if (query.fulltime) {
+        url = url + '&type=Full Time'
+      }
 
       config.url = url
 

@@ -48,18 +48,11 @@ export default function Jobs(props) {
   }, [page.page, page.newSearch])
 
   const handleChange = (e) => {
-    let name = e.target.name
-    let value = e.target.value
-
-    if (name === 'fulltime') {
-      value = !state.input.fulltime
-    }
-
     setState(prev => ({
       ...prev,
       input: {
         ...prev.input,
-        [name]: value
+        [e.target.name]: e.target.value
       }
     }))
   }
@@ -81,12 +74,29 @@ export default function Jobs(props) {
     }))
   }
 
+  const handleFulltime = () => {
+    setState(prev => ({
+      ...prev,
+      input: {
+        ...prev.input,
+        fulltime: !prev.input.fulltime
+      }
+    }))
+    
+    setPage((prev) => ({
+      ...prev,
+      page: 1,
+      newSearch: prev.newSearch + 1
+    }))
+  }
+
   return(
     <div>
       <Searchbar
         input={state.input}
         onSearch={handleSearch}
         onChange={handleChange}
+        handleFulltime={handleFulltime}
       />
       <div className="relative w-full pt-5 pb-3 px-3">
         <h1 className='text-2xl font-bold text-black'>Job List</h1>
