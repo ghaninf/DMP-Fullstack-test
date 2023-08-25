@@ -79,7 +79,24 @@ const JobController = {
   async get(req, res, next) {
     try {
       const id = req.params.id
-      data = []
+
+      let url = `http://dev3.dansmultipro.co.id/api/recruitment/positions/${id}`;
+      let config = {
+        method: 'get',
+        url: url,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+
+      const data = await axios(config)
+        .then((response) => {
+          return response.data
+        })
+        .catch((error) => {
+          throw error
+        });
+
       return res
         .status(200)
         .json(data);

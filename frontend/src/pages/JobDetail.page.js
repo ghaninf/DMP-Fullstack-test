@@ -3,23 +3,20 @@ import { UserContext } from "../layouts";
 import { BackButton, Card } from "../components";
 
 import '../assets/jobdetail.css';
+import { JobService } from "../services";
 
-export default function JobDetail(props) {
+export default function JobDetail() {
   const [state, setState] = useState({})
   const { pageURL } = useContext(UserContext);
-  
-  const getData = async () => {
-    try {
-      const response = await fetch(`http://dev3.dansmultipro.co.id/api/recruitment/positions/${pageURL[2]}`);
-      const data = await response.json();
-      setState(data);
-    } catch (error) {
-      console.error('Error fetching search results:', error);
-    }
-  }
 
   useEffect(() => {
-    getData()
+    JobService.getDetail(pageURL[2])
+      .then(res => {
+        setState(res);
+      })
+      .catch(error => {
+        console.log(error.message)
+      })
   }, [])
 
   const openNewTab = (url) => {
